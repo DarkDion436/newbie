@@ -336,11 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileCartBtn = document.getElementById('mobileCartBtn');
 
     if (mobileMenuBtn) {
-
-            mobileNavOverlay.classList.toggle('open', isOpen);
-            mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-            mobileNavBtnSetExpanded(isOpen);
-        });
+        mobileMenuBtn.addEventListener('click', openMobileNav);
     }
 
     if (mobileNavClose) mobileNavClose.addEventListener('click', closeMobileNav);
