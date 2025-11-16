@@ -432,18 +432,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    populateMobileNav();
-    /
+    // Sync cart count on load for both desktop and mobile
+    function syncAllCartCounts() {
+        const count = cart.items ? cart.items.reduce((s, it) => s + it.qty, 0) : 0;
+        if (cartCountEl) cartCountEl.innerText = count;
+        if (mobileCartCount) mobileCartCount.innerText = count;
+    }
 
+    // Initial setup
+    // populateMobileNav(); // This function seems to have issues, let's rely on the static HTML for now.
     syncAllCartCounts();
-    // Add this to the global scope so it can be called frtion() {
+
+    // Add this to the global scope so it can be called from other scripts
+    window.syncAllCartCounts = function() {
         syncAllCartCounts();
     };
 
-    /* Features marquee */ction initFeaturesMarquee(){
+    /* Features marquee */
+    (function initFeaturesMarquee(){
         const featuresContainer = document.querySelector('.features-content');
         if (!featuresContainer) return;
-        if (featuresContainer.querySelector('.features-track')) return;
 
         const track = document.createElement('div');
         track.className = 'features-track';

@@ -440,8 +440,8 @@ img { max-width: 100%; display: block; }
 
 /* marquee animation - we translate the track by 50% because its content is duplicated */
 @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
 }
 .features-track {
     animation: marquee var(--marquee-duration, 18s) linear infinite;
